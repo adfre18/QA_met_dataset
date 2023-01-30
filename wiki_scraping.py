@@ -43,7 +43,8 @@ class WikiDataLoader(object):
         authors_with_desc = list()
         os.makedirs(os.path.dirname(self.output_filename), exist_ok=True)
         with open(self.output_filename, "w+", encoding='utf-8') as fw:
-            pbar = tqdm(total=self.maximum_artists, desc="Processing the list of dictionaries and creating tsv file for training")
+            pbar = tqdm(total=self.maximum_artists,
+                        desc="Processing the list of dictionaries and creating tsv file for training")
             for record in self.list_of_records:
                 if record['Artist Wikidata URL'] is not None:
                     try:
@@ -64,7 +65,7 @@ class WikiDataLoader(object):
                                 return
                     except Exception as e:
                         pass
-         
+
     def __load_artist_info(self, artist_url):
         # extracting artist info from WIKIPEDIA using API
         wiki_wiki = wikipediaapi.Wikipedia('en', extract_format=wikipediaapi.ExtractFormat.WIKI)
